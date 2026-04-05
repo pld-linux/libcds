@@ -6,7 +6,7 @@ Summary:	Concurrent Data Structers library
 Summary(pl.UTF-8):	Biblioteka współbieżnych struktur danych (Concurrent Data Structures)
 Name:		libcds
 Version:	2.3.3
-Release:	1
+Release:	2
 License:	Boost v1.0
 Group:		Libraries
 #Source0Download: https://github.com/khizmax/libcds/releases
@@ -20,6 +20,9 @@ BuildRequires:	cmake >= 3.0.2
 BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	rpm-build >= 4.6
+%ifarch %{x8664} x32
+Requires:	cpuinfo(cx16)
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
