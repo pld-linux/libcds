@@ -12,8 +12,9 @@ Group:		Libraries
 #Source0Download: https://github.com/khizmax/libcds/releases
 Source0:	https://github.com/khizmax/libcds/archive/v%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	e2622b1334f271022140253e3557f0ae
+Patch0:		%{name}-libdir.patch
 URL:		https://github.com/khizmax/libcds
-BuildRequires:	boost >= 1.50
+BuildRequires:	boost-devel >= 1.50
 BuildRequires:	cmake >= 3.0.2
 %{?with_apidocs:BuildRequires:	doxygen}
 BuildRequires:	libstdc++-devel >= 6:4.7
@@ -41,6 +42,7 @@ Summary:	Header files for CDS library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki CDS
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	boost-devel >= 1.50
 
 %description devel
 Header files for CDS library.
@@ -74,6 +76,7 @@ Dokumentacja API biblioteki CDS.
 
 %prep
 %setup -q
+%patch -P0 -p1
 
 %build
 install -d build
